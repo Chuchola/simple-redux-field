@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux';
 
-import { openField, closeField, openFields, closeFields } from 'redux-storage-field';
+import { openField, closeField, openFields, closeFields } from 'simple-redux-field';
 
 const App = () => {
   const dispatch = useDispatch();

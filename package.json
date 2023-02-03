@@ -1,5 +1,5 @@
 {
-  "name": "redux-storage-field",
+  "name": "simple-redux-field",
   "version": "1.0.3",
   "description": "Simplifies creating redux fields process.",
   "author": {
@@ -7,7 +7,7 @@
     "email": "yura.chuchola.work@gmail.com"
   },
   "license": "MIT",
-  "repository": "Chuchola/redux-storage-field",
+  "repository": "Chuchola/simple-redux-field",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
@@ -20,7 +20,7 @@
     "storage",
     "field"
   ],
-  "homepage": "https://github.com/Chuchola/redux-storage-field",
+  "homepage": "https://github.com/Chuchola/simple-redux-field",
   "scripts": {
     "build": "microbundle-crl --no-compress --format modern,cjs",
     "start": "microbundle-crl watch --no-compress --format modern,cjs",

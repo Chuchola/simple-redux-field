@@ -1,6 +1,6 @@
 {
-  "short_name": "redux-storage-field",
-  "name": "redux-storage-field",
+  "short_name": "simple-redux-field",
+  "name": "simple-redux-field",
   "icons": [
     {
       "src": "favicon.ico",

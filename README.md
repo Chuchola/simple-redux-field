@@ -1,26 +1,26 @@
-# redux-storage-field
+# simple-redux-field
 
 Simplifies creating redux fields process.
 
-[![NPM](https://img.shields.io/npm/v/redux-storage-field.svg)](https://www.npmjs.com/package/redux-storage-field)
+[![NPM](https://img.shields.io/npm/v/simple-redux-field.svg)](https://www.npmjs.com/package/simple-redux-field)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Install
 
 ```bash
-npm install --save redux-storage-field
+npm install --save simple-redux-field
 ```
 
 ### Configure redux store
 1. With reduxjs/toolkit:
 ```jsx
 import { configureStore } from '@reduxjs/toolkit';
-import { reduxStorageFieldReducer } from 'redux-storage-field';
+import { simpleReduxFieldReducer } from 'simple-redux-field';
 
 export const store = configureStore({
   reducer: {
-    fields: reduxStorageFieldReducer,
+    fields: simpleReduxFieldReducer,
     // other reducers
   },
 });
@@ -29,10 +29,10 @@ export const store = configureStore({
 2. With redux:
 ```jsx
 import { legacy_createStore as createStore, combineReducers } from 'redux';
-import { reduxStorageFieldReducer } from 'redux-storage-field';
+import { simpleReduxFieldReducer } from 'simple-redux-field';
 
 export const store = createStore(combineReducers({
-  fields: reduxStorageFieldReducer,
+  fields: simpleReduxFieldReducer,
   // other reducers
 }));
 ```
@@ -42,7 +42,7 @@ export const store = createStore(combineReducers({
 import React from 'react'
 import { useDispatch } from 'react-redux';
 
-import { openField, closeField } from 'redux-storage-field';
+import { openField, closeField } from 'simple-redux-field';
 
 const AGE_FIELD = 'person_form__age_field';
 

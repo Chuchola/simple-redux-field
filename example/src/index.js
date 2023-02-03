@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { legacy_createStore as createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk';
 
-import { reduxStorageFieldReducer } from 'redux-storage-field'
+import { simpleReduxFieldReducer } from 'simple-redux-field'
 
 const composeEnhancers =
   typeof window === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
@@ -16,7 +16,7 @@ const composeEnhancers =
     : compose;
 
 const store = createStore(combineReducers({
-  fields: reduxStorageFieldReducer,
+  fields: simpleReduxFieldReducer,
 }), composeEnhancers(applyMiddleware(thunk)));
 
 ReactDOM.render(

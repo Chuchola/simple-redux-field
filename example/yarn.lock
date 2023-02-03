@@ -8899,7 +8899,7 @@ recursive-readdir@2.2.2:
   dependencies:
     minimatch "3.0.4"
 
-"redux-storage-field@link:..":
+"simple-redux-field@link:..":
   version "0.0.0"
   uid ""
 

@@ -1,26 +1,25 @@
 import { omit, omitMultiple } from './helpers'
 
-const REDUX_STORAGE_FIELD__OPEN = 'REDUX_STORAGE_FIELD__OPEN'
-const REDUX_STORAGE_FIELD__CLOSE = 'REDUX_STORAGE_FIELD__CLOSE'
-const REDUX_STORAGE_FIELD__OPEN_MULTIPLE = 'REDUX_STORAGE_FIELD__OPEN_MULTIPLE'
-const REDUX_STORAGE_FIELD__CLOSE_MULTIPLE =
-  'REDUX_STORAGE_FIELD__CLOSE_MULTIPLE'
+const SIMPLE_REDUX_FIELD__OPEN = 'SIMPLE_REDUX_FIELD__OPEN'
+const SIMPLE_REDUX_FIELD__CLOSE = 'SIMPLE_REDUX_FIELD__CLOSE'
+const SIMPLE_REDUX_FIELD__OPEN_MULTIPLE = 'SIMPLE_REDUX_FIELD__OPEN_MULTIPLE'
+const SIMPLE_REDUX_FIELD__CLOSE_MULTIPLE = 'SIMPLE_REDUX_FIELD__CLOSE_MULTIPLE'
 
 const initialState = {}
 
-export const reduxStorageFieldReducer = (state = initialState, action) => {
+export const simpleReduxFieldReducer = (state = initialState, action) => {
   const payload = action.payload
   switch (action.type) {
-    case REDUX_STORAGE_FIELD__OPEN:
+    case SIMPLE_REDUX_FIELD__OPEN:
       return openCase(state, payload)
 
-    case REDUX_STORAGE_FIELD__CLOSE:
+    case SIMPLE_REDUX_FIELD__CLOSE:
       return closeCase(state, payload)
 
-    case REDUX_STORAGE_FIELD__OPEN_MULTIPLE:
+    case SIMPLE_REDUX_FIELD__OPEN_MULTIPLE:
       return openMultipleCase(state, payload)
 
-    case REDUX_STORAGE_FIELD__CLOSE_MULTIPLE:
+    case SIMPLE_REDUX_FIELD__CLOSE_MULTIPLE:
       return closeMultipleCase(state, payload)
 
     default:
@@ -57,22 +56,22 @@ const closeMultipleCase = (state, payload) => {
 }
 
 const openAction = (key, value) => ({
-  type: REDUX_STORAGE_FIELD__OPEN,
+  type: SIMPLE_REDUX_FIELD__OPEN,
   payload: { key, value }
 })
 
 const closeAction = (key) => ({
-  type: REDUX_STORAGE_FIELD__CLOSE,
+  type: SIMPLE_REDUX_FIELD__CLOSE,
   payload: { key }
 })
 
 const openMultipleAction = (values) => ({
-  type: REDUX_STORAGE_FIELD__OPEN_MULTIPLE,
+  type: SIMPLE_REDUX_FIELD__OPEN_MULTIPLE,
   payload: values
 })
 
 const closeMultipleAction = (keys) => ({
-  type: REDUX_STORAGE_FIELD__CLOSE_MULTIPLE,
+  type: SIMPLE_REDUX_FIELD__CLOSE_MULTIPLE,
   payload: keys
 })
 
