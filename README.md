@@ -20,7 +20,7 @@ import { simpleReduxFieldReducer } from 'simple-redux-field';
 
 export const store = configureStore({
   reducer: {
-    fields: simpleReduxFieldReducer,
+    ...simpleReduxFieldReducer,
     // other reducers
   },
 });
@@ -32,7 +32,7 @@ import { legacy_createStore as createStore, combineReducers } from 'redux';
 import { simpleReduxFieldReducer } from 'simple-redux-field';
 
 export const store = createStore(combineReducers({
-  fields: simpleReduxFieldReducer,
+  ...simpleReduxFieldReducer,
   // other reducers
 }));
 ```
@@ -40,14 +40,15 @@ export const store = createStore(combineReducers({
 ### Example
 ```jsx
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { openField, closeField } from 'simple-redux-field';
+import { openField, closeField, $fields } from 'simple-redux-field';
 
 const AGE_FIELD = 'person_form__age_field';
 
 const App = () => {
   const dispatch = useDispatch();
+  const fields = useSelector($fields);
 
   const handleAgeSet = () => {
     dispatch(openField(AGE_FIELD, 23));
@@ -58,6 +59,11 @@ const App = () => {
   }
 
   // ...
+  return (
+    <pre>
+      {JSON.stringify(fields, null, 2)}
+    </pre>
+  );
 }
 ```
 

@@ -1,10 +1,17 @@
-import React from 'react'
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { openField, closeField, openFields, closeFields } from 'simple-redux-field';
+import {
+  openField,
+  closeField,
+  openFields,
+  closeFields,
+  $fields,
+} from 'simple-redux-field';
 
 const App = () => {
   const dispatch = useDispatch();
+  const fields = useSelector($fields);
 
   const handleAddField = () => {
     dispatch(openField('one', 'hello one!'));
@@ -62,6 +69,9 @@ const App = () => {
         >
           Remove fields
         </button>
+      </div>
+      <div>
+        <pre>{ JSON.stringify(fields, null, 2) }</pre>
       </div>
     </>
   );
