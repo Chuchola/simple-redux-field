@@ -136,10 +136,12 @@ export default SimpleForm;
 ```
 
 ### API
-`openField(key, value)` - creates field in redux storage: `key: value`;
+`fieldsOpen([ { key: 'key1', value: 'value1' }, ... ])` - creates multiple fields in redux storage;
 
-`closeField(key)` - removes field from redux storage by specify `key`;
+`fieldsSet([ { key: 'key1', value: 'value1' }, ... ])` - changes multiple fields in redux storage;
 
-`openFields([ { key: 'key1', value: 'value1' }, ... ])` - creates multiple fields in redux storage;
+`fieldSet(key, value)` - changes one field in redux storage;
 
-`closeFields([ 'key1', ... ])` - removes multiple fields from redux storage by specify keys.
+`fieldsClose([ 'key1', ... ])` - removes fields from redux storage. `keys` parameter are array of strings;
+
+`$fields` - gets fields from storage.
