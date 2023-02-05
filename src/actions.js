@@ -1,26 +1,38 @@
 import {
-  SIMPLE_REDUX_FIELD__OPEN,
-  SIMPLE_REDUX_FIELD__CLOSE,
-  SIMPLE_REDUX_FIELD__OPEN_MULTIPLE,
-  SIMPLE_REDUX_FIELD__CLOSE_MULTIPLE,
+  SIMPLE_REDUX_FIELDS__OPEN,
+  SIMPLE_REDUX_FIELDS__CLOSE,
+  SIMPLE_REDUX_FIELDS__SET,
 } from './constants';
 
-export const openAction = (key, value) => ({
-  type: SIMPLE_REDUX_FIELD__OPEN,
-  payload: { key, value },
+/**
+ * Open fields.
+ *
+ * @param {object} fieldsObj
+ * @returns {{payload, type: string}}
+ */
+export const fieldsOpen = fieldsObj => ({
+  type: SIMPLE_REDUX_FIELDS__OPEN,
+  payload: fieldsObj,
 });
 
-export const closeAction = (key) => ({
-  type: SIMPLE_REDUX_FIELD__CLOSE,
-  payload: { key },
-});
-
-export const openMultipleAction = (values) => ({
-  type: SIMPLE_REDUX_FIELD__OPEN_MULTIPLE,
-  payload: values,
-});
-
-export const closeMultipleAction = (keys) => ({
-  type: SIMPLE_REDUX_FIELD__CLOSE_MULTIPLE,
+/**
+ * Close fields.
+ *
+ * @param {Array.<string>} keys
+ * @returns {{payload, type: string}}
+ */
+export const fieldsClose = keys => ({
+  type: SIMPLE_REDUX_FIELDS__CLOSE,
   payload: keys,
+});
+
+/**
+ * Set fields.
+ *
+ * @param {Object} fieldsObj
+ * @returns {{payload, type: string}}
+ */
+export const fieldsSet = fieldsObj => ({
+  type: SIMPLE_REDUX_FIELDS__SET,
+  payload: fieldsObj,
 });

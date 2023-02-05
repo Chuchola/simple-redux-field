@@ -1,9 +1,9 @@
 export { simpleReduxFieldReducer } from './reducer';
 export {
-  openField,
-  closeField,
-  openFields,
-  closeFields,
+  fieldsOpen,
+  fieldsClose,
+  fieldsSet,
+  fieldSet,
 } from './creators';
 export {
   $fields,

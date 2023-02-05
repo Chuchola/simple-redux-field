@@ -1,9 +1,9 @@
-import { omit, omitMultiple } from './helpers';
+import { omitMultiple } from './helpers';
 import {
-  SIMPLE_REDUX_FIELD__OPEN,
-  SIMPLE_REDUX_FIELD__CLOSE,
-  SIMPLE_REDUX_FIELD__OPEN_MULTIPLE,
-  SIMPLE_REDUX_FIELD__CLOSE_MULTIPLE, REDUX_FIELD_NAME,
+  SIMPLE_REDUX_FIELDS__OPEN,
+  SIMPLE_REDUX_FIELDS__CLOSE,
+  SIMPLE_REDUX_FIELDS__SET,
+  REDUX_FIELD_NAME,
 } from './constants';
 
 const initialState = {};
@@ -11,17 +11,14 @@ const initialState = {};
 const reducer = (state = initialState, action) => {
   const payload = action.payload;
   switch (action.type) {
-    case SIMPLE_REDUX_FIELD__OPEN:
-      return openCase(state, payload);
+    case SIMPLE_REDUX_FIELDS__OPEN:
+      return fieldsSet(state, payload);
 
-    case SIMPLE_REDUX_FIELD__CLOSE:
-      return closeCase(state, payload);
+    case SIMPLE_REDUX_FIELDS__CLOSE:
+      return fieldsClose(state, payload);
 
-    case SIMPLE_REDUX_FIELD__OPEN_MULTIPLE:
-      return openMultipleCase(state, payload);
-
-    case SIMPLE_REDUX_FIELD__CLOSE_MULTIPLE:
-      return closeMultipleCase(state, payload);
+    case SIMPLE_REDUX_FIELDS__SET:
+      return fieldsSet(state, payload);
 
     default:
       return state;
@@ -32,30 +29,26 @@ export const simpleReduxFieldReducer = {
   [REDUX_FIELD_NAME]: reducer,
 };
 
-const openCase = (state, payload) => {
-  return {
-    ...state,
-    [payload.key]: payload.value,
-  };
+const fieldsSet = (state, payload) => {
+  return Object.keys(payload).reduce((acc, curr) => {
+    const value = payload[curr];
+    if (typeof value === 'object' && value !== null) {
+      return {
+        ...acc,
+        [curr]: {
+          ...state[curr],
+          ...value,
+        },
+      };
+    } else {
+      return {
+        ...acc,
+        [curr]: value,
+      };
+    }
+  }, state);
 };
 
-const closeCase = (state, payload) => {
-  return omit(state, payload.key);
-};
-
-const openMultipleCase = (state, payload) => {
-  const fields = payload.reduce((acc, curr) => {
-    return {
-      ...acc,
-      [curr.key]: curr.value,
-    };
-  }, {});
-  return {
-    ...state,
-    ...fields,
-  };
-};
-
-const closeMultipleCase = (state, payload) => {
+const fieldsClose = (state, payload) => {
   return omitMultiple(state, payload);
 };
