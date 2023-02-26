@@ -7,6 +7,10 @@ export const omitMultiple = (o, keys) => {
   return Object.fromEntries(Object.entries(o).filter((e) => !exclude.has(e[0])));
 };
 
+export const getType = (type, space) => {
+  return `${space ? `${space}::` : ''}${type}`;
+};
+
 /**
  * Get fields object from fields array.
  *

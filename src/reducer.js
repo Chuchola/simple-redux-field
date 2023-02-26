@@ -1,4 +1,4 @@
-import { omitMultiple } from './helpers';
+import { omitMultiple, getType } from './helpers';
 import {
   SIMPLE_REDUX_FIELDS__OPEN,
   SIMPLE_REDUX_FIELDS__CLOSE,
@@ -10,14 +10,15 @@ const initialState = {};
 
 const reducer = (state = initialState, action) => {
   const payload = action.payload;
+  const space = payload && payload.space ? payload.space : '';
   switch (action.type) {
-    case SIMPLE_REDUX_FIELDS__OPEN:
+    case getType(SIMPLE_REDUX_FIELDS__OPEN, space):
       return fieldsSet(state, payload);
 
-    case SIMPLE_REDUX_FIELDS__CLOSE:
+    case getType(SIMPLE_REDUX_FIELDS__CLOSE, space):
       return fieldsClose(state, payload);
 
-    case SIMPLE_REDUX_FIELDS__SET:
+    case getType(SIMPLE_REDUX_FIELDS__SET, space):
       return fieldsSet(state, payload);
 
     default:
@@ -30,8 +31,9 @@ export const simpleReduxFieldReducer = {
 };
 
 const fieldsSet = (state, payload) => {
-  return Object.keys(payload).reduce((acc, curr) => {
-    const value = payload[curr];
+  const fieldsObj = payload.fieldsObj;
+  return Object.keys(fieldsObj).reduce((acc, curr) => {
+    const value = fieldsObj[curr];
     if (typeof value === 'object' && value !== null) {
       return {
         ...acc,
@@ -50,5 +52,5 @@ const fieldsSet = (state, payload) => {
 };
 
 const fieldsClose = (state, payload) => {
-  return omitMultiple(state, payload);
+  return omitMultiple(state, payload.keys);
 };

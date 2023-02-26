@@ -1,3 +1,4 @@
+import { getType } from './helpers';
 import {
   SIMPLE_REDUX_FIELDS__OPEN,
   SIMPLE_REDUX_FIELDS__CLOSE,
@@ -8,31 +9,34 @@ import {
  * Open fields.
  *
  * @param {object} fieldsObj
+ * @param {string} space
  * @returns {{payload, type: string}}
  */
-export const fieldsOpen = fieldsObj => ({
-  type: SIMPLE_REDUX_FIELDS__OPEN,
-  payload: fieldsObj,
+export const fieldsOpen = (fieldsObj, space) => ({
+  type: getType(SIMPLE_REDUX_FIELDS__OPEN, space),
+  payload: { space, fieldsObj },
 });
 
 /**
  * Close fields.
  *
  * @param {Array.<string>} keys
+ * @param {string} space
  * @returns {{payload, type: string}}
  */
-export const fieldsClose = keys => ({
-  type: SIMPLE_REDUX_FIELDS__CLOSE,
-  payload: keys,
+export const fieldsClose = (keys, space) => ({
+  type: getType(SIMPLE_REDUX_FIELDS__CLOSE, space),
+  payload: { space, keys },
 });
 
 /**
  * Set fields.
  *
  * @param {Object} fieldsObj
+ * @param {string} space
  * @returns {{payload, type: string}}
  */
-export const fieldsSet = fieldsObj => ({
-  type: SIMPLE_REDUX_FIELDS__SET,
-  payload: fieldsObj,
+export const fieldsSet = (fieldsObj, space) => ({
+  type: getType(SIMPLE_REDUX_FIELDS__SET, space),
+  payload: { space, fieldsObj },
 });

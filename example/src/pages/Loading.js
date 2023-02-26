@@ -9,6 +9,7 @@ import {
   $fields,
 } from 'simple-redux-field';
 
+const NAMESPACE = 'LoadingFormPage';
 const FN_FIELD = 'person_form__first_name_field';
 const LN_FIELD = 'person_form__last_name_field';
 const AGE_FIELD = 'person_form__age_field';
@@ -25,39 +26,39 @@ const Loading = () => {
       { key: LN_FIELD, value: searchParams.get('ln') || null },
       { key: AGE_FIELD, value: searchParams.get('age') || null },
       { key: LOADING_FIELD, value: { inProgress: false, error: null } },
-    ]));
+    ], NAMESPACE));
     return () => dispatch(fieldsClose([
       FN_FIELD,
       LN_FIELD,
       AGE_FIELD,
       LOADING_FIELD,
-    ]));
+    ], NAMESPACE));
   }, [dispatch]);
 
   const handleFirstNameChange = e => {
     const value = e.target.value;
-    dispatch(fieldSet(FN_FIELD, value));
+    dispatch(fieldSet(FN_FIELD, value, NAMESPACE));
   };
 
   const handleLastNameChange = e => {
     const value = e.target.value;
-    dispatch(fieldSet(LN_FIELD, value));
+    dispatch(fieldSet(LN_FIELD, value, NAMESPACE));
   };
 
   const handleAgeChange = e => {
     const value = e.target.value;
-    dispatch(fieldSet(AGE_FIELD, value));
+    dispatch(fieldSet(AGE_FIELD, value, NAMESPACE));
   }
 
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(fieldSet(LOADING_FIELD, {
       inProgress: true,
-    }));
+    }, NAMESPACE));
     setTimeout(() => {
       dispatch(fieldSet(LOADING_FIELD, {
         inProgress: false,
-      }));
+      }, NAMESPACE));
     }, 3000);
   };
 

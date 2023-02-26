@@ -8,6 +8,7 @@ import {
   $fields,
 } from 'simple-redux-field';
 
+const NAMESPACE = 'SimpleFormPage';
 const FN_FIELD = 'person_form__first_name_field';
 const LN_FIELD = 'person_form__last_name_field';
 const AGE_FIELD = 'person_form__age_field';
@@ -21,27 +22,27 @@ const SimpleForm = () => {
       FN_FIELD,
       LN_FIELD,
       AGE_FIELD,
-    ]));
+    ], NAMESPACE));
     return () => dispatch(fieldsClose([
       FN_FIELD,
       LN_FIELD,
       AGE_FIELD,
-    ]));
+    ], NAMESPACE));
   }, [dispatch]);
 
   const handleFirstNameChange = e => {
     const value = e.target.value;
-    dispatch(fieldSet(FN_FIELD, value));
+    dispatch(fieldSet(FN_FIELD, value, NAMESPACE));
   };
 
   const handleLastNameChange = e => {
     const value = e.target.value;
-    dispatch(fieldSet(LN_FIELD, value));
+    dispatch(fieldSet(LN_FIELD, value, NAMESPACE));
   };
 
   const handleAgeChange = e => {
     const value = e.target.value;
-    dispatch(fieldSet(AGE_FIELD, value));
+    dispatch(fieldSet(AGE_FIELD, value, NAMESPACE));
   }
 
   const ages = Array.from({ length: 100 }, (val, index) => 20 + index);
