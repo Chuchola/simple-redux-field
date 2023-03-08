@@ -8,7 +8,7 @@ import {
 
 const initialState = {};
 
-const reducer = (state = initialState, action) => {
+const reducer = defaultState => (state = defaultState, action) => {
   const payload = action.payload;
   const space = payload && payload.space ? payload.space : '';
   switch (action.type) {
@@ -26,9 +26,9 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export const simpleReduxFieldReducer = {
-  [REDUX_FIELD_NAME]: reducer,
-};
+export const simpleReduxFieldReducer = (defaultState = initialState) => ({
+  [REDUX_FIELD_NAME]: reducer(defaultState),
+});
 
 const fieldsSet = (state, payload) => {
   const fieldsObj = payload.fieldsObj;

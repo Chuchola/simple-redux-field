@@ -1,6 +1,6 @@
 {
   "name": "simple-redux-field",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Simplifies creating redux fields process.",
   "author": {
     "name": "Yura Chuchola",

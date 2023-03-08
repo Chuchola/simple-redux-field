@@ -20,7 +20,7 @@ import { simpleReduxFieldReducer } from 'simple-redux-field';
 
 export const store = configureStore({
   reducer: {
-    ...simpleReduxFieldReducer,
+    ...simpleReduxFieldReducer(),
     // other reducers
   },
 });
@@ -32,7 +32,7 @@ import { legacy_createStore as createStore, combineReducers } from 'redux';
 import { simpleReduxFieldReducer } from 'simple-redux-field';
 
 export const store = createStore(combineReducers({
-  ...simpleReduxFieldReducer,
+  ...simpleReduxFieldReducer(),
   // other reducers
 }));
 ```
